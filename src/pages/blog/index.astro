@@ -1,0 +1,7 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { publishedPosts, categories, categorySlug } from '../../lib/posts';
+const posts = await publishedPosts();
+---
+<Layout title="सबै लेखहरू"><section class="wrap archive"><div class="archive-header"><p class="section-kicker">शब्दहरूको सङ्ग्रह</p><h1>कथा, सिकाइ र सम्झनाहरू।</h1><p>मन लागेको विषय छान्नुहोस्, वा सबै कथाहरूमा हराउनुहोस्।</p></div><nav class="category-links archive-tabs" aria-label="लेखका विषय"><a href="/blog/" aria-current="page">सबै लेखहरू</a>{categories.map(category => <a href={`/category/${categorySlug[category]}/`}>{category}</a>)}</nav><div class="post-grid">{posts.map(post => <PostCard post={post} />)}</div></section></Layout>

@@ -1,0 +1,10 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate, readingTime } from '../lib/posts';
+interface Props { post: CollectionEntry<'posts'>; }
+const { post } = Astro.props;
+---
+<article class="post-card">
+  <a class="card-image" href={`/blog/${post.id}/`} tabindex="-1" aria-hidden="true"><img src={post.data.cover} alt="" width="900" height="600" loading="lazy" /></a>
+  <div class="card-copy"><span class="category">{post.data.category}</span><h3><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3><p>{post.data.description}</p><div class="post-meta"><time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time><span>{readingTime(post)} पढाइ</span></div></div>
+</article>

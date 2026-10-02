@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PostCard from '../components/PostCard.astro';
+import { publishedPosts, categories, categorySlug, formatDate, readingTime } from '../lib/posts';
+const posts = await publishedPosts();
+const featured = posts[0];
+---
+<Layout>
+  <section class="hero wrap">
+    <div class="hero-copy"><span class="intro-line"><span class="little-sun" aria-hidden="true">☀</span> नमस्ते, म सूर्य।</span><h1>जीवनका बाटाहरू,<br />शब्दका यात्राहरू।</h1><p>घुम्दै, सिक्दै र बाँच्दै गर्दा भेटिएका साना–ठूला कथाहरू। आफ्नै भाषामा, आफ्नै लयमा।</p><a class="button" href="/blog/">कथाहरू पढ्नुहोस् <span aria-hidden="true">↗</span></a><span class="hero-note">नेपाली मन, नेपाली शब्द।</span></div>
+    <div class="hero-art"><img src="/images/mountains.jpg" alt="बादलमाथि देखिएका हिमालका चुचुराहरू" width="1400" height="1000" fetchpriority="high" /><span class="photo-note">बाटोले पनि धेरै कुरा सिकाउँछ।</span><div class="sun-stamp" aria-hidden="true">☀<span>यात्रा जारी छ</span></div></div>
+  </section>
+  <div class="themes-band"><div class="wrap"><span>जिज्ञासाबाट सुरु हुने कथा</span><span>सिकाइ <i aria-hidden="true">✳</i> यात्रा <i aria-hidden="true">✳</i> अनुभव</span></div></div>
+  <section class="wrap featured-section"><div class="section-heading"><div><p class="section-kicker">पढ्न छुटाउनु भयो कि?</p><h2>यसपालिको कथा</h2></div><a class="text-link" href="/blog/">सबै लेखहरू <span aria-hidden="true">↗</span></a></div>
+    {featured && <article class="featured"><a class="featured-image" href={`/blog/${featured.id}/`} tabindex="-1" aria-hidden="true"><img src={featured.data.cover} alt="" width="1200" height="800" loading="lazy" /></a><div class="featured-copy"><span class="category">{featured.data.category}</span><h3><a href={`/blog/${featured.id}/`}>{featured.data.title}</a></h3><p>{featured.data.description}</p><div class="post-meta"><time datetime={featured.data.date.toISOString()}>{formatDate(featured.data.date)}</time><span>{readingTime(featured)} पढाइ</span></div><a class="text-link" href={`/blog/${featured.id}/`}>पूरा कथा पढ्नुहोस् <span aria-hidden="true">↗</span></a></div></article>}
+  </section>
+  <section class="wrap latest-section"><div class="section-heading"><div><p class="section-kicker">नयाँ पानाहरू</p><h2>अझै केही कथाहरू</h2></div><div class="category-links" aria-label="विषयहरू">{categories.map(category => <a href={`/category/${categorySlug[category]}/`}>{category}</a>)}</div></div><div class="post-grid">{posts.slice(1, 4).map(post => <PostCard post={post} />)}</div></section>
+  <section class="about-strip wrap"><div class="sun-drawing" aria-hidden="true">☀</div><div><h2>हरेक दिन एउटा नयाँ पाना।</h2><p>कहिले किताबको पानामा, कहिले पहाडको बाटोमा, कहिले आफ्नै गल्तीमा — सिक्ने कुरा जताततै छन्। तिनै कुराहरू यहाँ बाँड्ने सानो प्रयास हो।</p></div><a class="button button-light" href="/about/">मलाई चिन्नुहोस् <span aria-hidden="true">↗</span></a></section>
+</Layout>
