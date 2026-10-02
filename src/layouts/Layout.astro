@@ -5,7 +5,7 @@ import '@fontsource/noto-sans-devanagari/400.css';
 import '@fontsource/noto-sans-devanagari/600.css';
 import '../styles/global.css';
 interface Props { title?: string; description?: string; image?: string; article?: boolean; }
-const { title, description = 'सूर्य क्षेत्रीको नेपाली ब्लग। सिकाइ, यात्रा र जीवनका अनुभवहरूका कथा।', image = '/images/mountains.jpg', article = false } = Astro.props;
+const { title, description = 'सूर्य क्षेत्रीको नेपाली ब्लग। अध्ययन, यात्रा र जीवनका अनुभवहरूको लेखसङ्ग्रह।', image = '/images/mountains.jpg', article = false } = Astro.props;
 const pageTitle = title ? `${title} | सूर्यका शब्दहरू` : 'सूर्यका शब्दहरू — सिकाइ, यात्रा र अनुभव';
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const path = Astro.url.pathname;
@@ -16,7 +16,7 @@ const path = Astro.url.pathname;
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title><meta name="description" content={description} />
     <link rel="canonical" href={canonical} /><link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#252f69" />
+    <meta name="theme-color" content="#64372f" />
     <meta property="og:title" content={pageTitle} /><meta property="og:description" content={description} />
     <meta property="og:type" content={article ? 'article' : 'website'} /><meta property="og:locale" content="ne_NP" />
     <meta property="og:url" content={canonical} /><meta property="og:image" content={new URL(image, Astro.site)} />
@@ -26,14 +26,14 @@ const path = Astro.url.pathname;
   <body>
     <a class="skip-link" href="#main">मुख्य सामग्रीमा जानुहोस्</a>
     <header class="site-header wrap">
-      <a class="brand" href="/" aria-label="सूर्यका शब्दहरू — गृहपृष्ठ"><img src="/favicon.svg" width="44" height="44" alt="" /><span><strong>सूर्यका शब्दहरू</strong><small lang="en">surya chhetri blogs</small></span></a>
+      <a class="brand" href="/" aria-label="सूर्यका शब्दहरू — गृहपृष्ठ"><span><strong>सूर्यका शब्दहरू</strong><small>सूर्य क्षेत्री · अध्ययन, यात्रा र अनुभव</small></span></a>
       <nav aria-label="मुख्य नेभिगेसन">
         <a href="/" aria-current={path === '/' ? 'page' : undefined}>गृहपृष्ठ</a>
         <a href="/blog/" aria-current={path.startsWith('/blog') || path.startsWith('/category') ? 'page' : undefined}>लेखहरू</a>
-        <a href="/about/" aria-current={path === '/about/' ? 'page' : undefined}>मेरो परिचय</a>
+        <a href="/about/" aria-current={path === '/about/' ? 'page' : undefined}>लेखक परिचय</a>
       </nav>
     </header>
     <main id="main"><slot /></main>
-    <footer class="site-footer wrap"><div><a class="footer-brand" href="/">सूर्यका शब्दहरू</a><p>केही सिकाइ। केही यात्रा। केही जीवन।</p></div><div class="footer-links"><a href="/blog/">सबै लेखहरू</a><a href="/about/">मेरो परिचय</a><a href="/rss.xml" lang="en">RSS</a></div><small>© {new Date().getFullYear().toLocaleString('ne-NP', {useGrouping: false})} सूर्य क्षेत्री</small></footer>
+    <footer class="site-footer wrap"><div><a class="footer-brand" href="/">सूर्यका शब्दहरू</a><p>अध्ययन, चिन्तन र अनुभवको लेखसङ्ग्रह।</p></div><div class="footer-links"><a href="/blog/">सबै लेखहरू</a><a href="/about/">लेखक परिचय</a><a href="/rss.xml" lang="en">RSS</a></div><small>© {new Date().getFullYear().toLocaleString('ne-NP', {useGrouping: false})} सूर्य क्षेत्री</small></footer>
   </body>
 </html>
