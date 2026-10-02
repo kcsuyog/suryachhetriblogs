@@ -29,6 +29,7 @@ a {
   text-decoration: none;
 }
 img {
+  height: auto;
   max-width: 100%;
   display: block;
   object-fit: cover;

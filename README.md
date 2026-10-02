@@ -49,11 +49,15 @@ Six original Nepali sample articles are included. `sample: true` adds an example
 
 Repository: https://github.com/kcsuyog/suryachhetriblogs
 
-Import that GitHub repository as a new Netlify project. The checked-in `netlify.toml` supplies build command `npm run build`, output `dist`, and Node 22. No adapter or database is needed. Connect the `main` branch for automatic deployments whenever posts change.
+Live site: https://suryachhetri.netlify.app
+
+Netlify project: https://app.netlify.com/projects/suryachhetri/overview
+
+The repository is connected to this Netlify project for automatic deployments from `main`. To deploy a separate copy, import the GitHub repository as a new Netlify project. The checked-in `netlify.toml` supplies build command `npm run build`, output `dist`, and Node 22. No adapter or database is needed. Connect the `main` branch for automatic deployments whenever posts change.
 
 [Deploy to Netlify](https://app.netlify.com/start/deploy?repository=https://github.com/kcsuyog/suryachhetriblogs)
 
-The site uses Netlify's `URL` environment variable for canonical links, sitemap, and RSS. Outside Netlify it falls back to `https://suryachhetriblogs.netlify.app`; set `URL` to the real production address if hosting elsewhere. Set your primary custom domain in Netlify before rebuilding. No domain or personal email is assumed.
+The site uses Netlify's `URL` environment variable for canonical links, sitemap, and RSS. Outside Netlify it falls back to `https://suryachhetri.netlify.app`; set `URL` to the real production address if hosting elsewhere. Set your primary custom domain in Netlify before rebuilding. No domain or personal email is assumed.
 
 Documentation: [Astro Markdown collections](https://docs.astro.build/en/guides/content-collections/) and [Astro on Netlify](https://docs.astro.build/en/guides/deploy/netlify/).
 
